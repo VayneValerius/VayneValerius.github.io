@@ -1,0 +1,36 @@
+body {
+    background-color: cornflowerblue;
+}
+
+h2 {
+    color: grey;
+    text-align: center;
+}
+
+h3 {
+    color: grey;
+    text-align: center;
+    text-underline-position: below;
+}
+
+p {
+    text-align: center;
+}
+
+nav {
+    color: steelblue;
+}
+
+a {
+    color: goldenrod;
+    display: block;
+    text-decoration: darkblue;
+    text-align: center;
+    padding: 14px 16px;
+}
+
+a:hover {
+
+    background-color: mediumpurple;
+
+}
