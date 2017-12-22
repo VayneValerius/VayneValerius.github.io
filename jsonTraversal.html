@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="css/jsonTable.css">
+
+    <title>Kings And Queens - A Json Example</title>
+</head>
+
+<body>
+    <div = "topOfPage">
+        <h3>JSON Traversal</h3>
+        <h2>Search for Monarchs of the UK!</h2>
+    </div>
+    <div = "userInterface">
+        <p>Type in the box and hit search!  Full names not required</p>
+        <input id="search" type="text" placeholder="Henry" />
+        <button onclick="search()">Search Away!</button>
+    </div>>
+    <div id = "tableLocale">
+    </div>
+
+</body>
+<script>
+    function loadData() {
+        var requestURL = "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json";
+
+        var request = new XMLHttpRequest();
+        request.open('GET', requestURL);
+        request.responseType = 'json'
+        request.send();
+
+        request.onload = function () {
+            kingList  = request.response;
+        }
+    }
+
+    var kingList;
+    function search() {
+        var searchFor = document.getElementById("search").value;
+
+        document.getElementById("tableLocale").innerHTML = `
+
+                <table >
+                    <thead>
+                        <td> Ruler </td>
+                        <td> Country </td>
+                        <td> House </td>  
+                        <td> Years Reigned </td>
+                    </thead>
+                    <tbody id="kingTable">
+                    </tbody>
+                    
+                </table>       
+                `;
+
+        for (var key in kingList) {
+
+            if (searchFor.toLowerCase() == "dick")
+            {
+                searchFor = "Richard";
+            }
+            if (kingList[key].nm.toLowerCase().includes(searchFor.toLowerCase())) {
+
+                document.getElementById("kingTable").innerHTML += `
+                <tr>
+                   <td>${kingList[key].nm}</td>
+                   <td>${kingList[key].cty}</td>
+                   <td>${kingList[key].hse}</td>  
+                   <td>${kingList[key].yrs}</td>           
+                </tr> `;
+                
+            }
+
+        }
+    }
+
+    loadData();
+
+
+
+</script>
+
+</html>
