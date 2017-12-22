@@ -8,8 +8,9 @@ h2 {
 }
 
 h3 {
-    color: grey;
+    color: black;
     text-align: center;
+    text-decoration: underline;
     text-underline-position: below;
 }
 
